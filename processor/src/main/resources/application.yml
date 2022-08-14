@@ -1,9 +1,5 @@
 application:
-  name: shipment
-  scheduler:
-      shipmentDispatcher:
-        enabled: true
-        cron: "0 0/5 * 1/1 * ?"
+  name: processor
 server:
   port: 8081
   servlet:
@@ -11,8 +7,6 @@ server:
 spring:
   profiles:
     active: local
-  jpa:
-    show-sql: true
 #logging:
 #  level:
 #    org:
@@ -23,20 +17,6 @@ spring:
   config:
     activate:
       on-profile: local
-  datasource:
-    url: jdbc:mysql://localhost:3306/store_processor
-    name: store_processor
-    username: store
-    password: store
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    hibernate:
-      #      ddl-auto: create
-      #      ddl-auto: validate
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
   kafka:
     admin:
       properties:
@@ -67,39 +47,11 @@ spring:
                 serializer: org.springframework.kafka.support.serializer.JsonSerializer
       binder:
         defaultBrokerPort: 29092
-#        brokers:
-#          - localhost
-  sql:
-    init:
-      platform: mysql
-
-#  kafka:
-##    template:
-##      default-topic: order-events
-#    consumer:
-##      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-#      bootstrap-servers: localhost:9092,kafka-service:9092
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      group-id: order-events_shipment
-
 ---
 spring:
-  profiles: docker
-  datasource:
-    url: jdbc:mysql://mysql:3306/store_processor
-    name: store_consumer
-    username: store
-    password: store
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    hibernate:
-      #      ddl-auto: create
-      #      ddl-auto: validate
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+  config:
+    activate:
+      on-profile: docker
   kafka:
     #    template:
     #      default-topic: order-events
@@ -109,9 +61,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: order-events_shipment
-  sql:
-    init:
-      platform: mysql
+
 logging:
   level:
     root: INFO

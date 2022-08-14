@@ -1,0 +1,984 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2022-08-14T17:42:31.897Z",
+        "before": [
+          {
+            "result": {
+              "duration": 10191000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 11202000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 8,
+        "name": "Create one item (option 1)",
+        "description": "",
+        "id": "create-items;create-one-item-(option-1);;2",
+        "after": [
+          {
+            "result": {
+              "duration": 754000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 74436000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 4817000,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "An item with name \"Xperia X ii\" description \"Xperia X ii 256 GB\" and unit price 999.00 is instantiated",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Xperia X ii\"",
+                  "offset": 18
+                },
+                {
+                  "val": "\"Xperia X ii 256 GB\"",
+                  "offset": 44
+                },
+                {
+                  "val": "999.00",
+                  "offset": 80
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anItemWithNameDescriptionAndUnitPriceIsInstantiated(java.lang.String,java.lang.String,java.lang.Double)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 182400000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsCreated()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6654000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The item is returned",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsReturned()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:32.323Z",
+        "before": [
+          {
+            "result": {
+              "duration": 464000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 509000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 9,
+        "name": "Create one item (option 1)",
+        "description": "",
+        "id": "create-items;create-one-item-(option-1);;3",
+        "after": [
+          {
+            "result": {
+              "duration": 75000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 3301000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 268000,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "An item with name \"Mac Pro\" description \"Mac Pro 2020 32 GB\" and unit price 3999.99 is instantiated",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Mac Pro\"",
+                  "offset": 18
+                },
+                {
+                  "val": "\"Mac Pro 2020 32 GB\"",
+                  "offset": 40
+                },
+                {
+                  "val": "3999.99",
+                  "offset": 76
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anItemWithNameDescriptionAndUnitPriceIsInstantiated(java.lang.String,java.lang.String,java.lang.Double)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2646000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "The item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsCreated()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 131000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "The item is returned",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsReturned()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:32.351Z",
+        "before": [
+          {
+            "result": {
+              "duration": 437000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 706000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 11,
+        "name": "Create 2 items with same name",
+        "description": "",
+        "id": "create-items;create-2-items-with-same-name",
+        "after": [
+          {
+            "result": {
+              "duration": 75000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 3796000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 240000,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "An item with name \"Xperia X ii\" description \"Xperia X ii 256 GB\" and unit price 999.00 is instantiated",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Xperia X ii\"",
+                  "offset": 18
+                },
+                {
+                  "val": "\"Xperia X ii 256 GB\"",
+                  "offset": 44
+                },
+                {
+                  "val": "999.00",
+                  "offset": 80
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anItemWithNameDescriptionAndUnitPriceIsInstantiated(java.lang.String,java.lang.String,java.lang.Double)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2672000,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "The item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsCreated()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "An item with name \"Xperia X ii\" description \"Xperia X ii 128 GB\" and unit price 895.99 is instantiated",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Xperia X ii\"",
+                  "offset": 18
+                },
+                {
+                  "val": "\"Xperia X ii 128 GB\"",
+                  "offset": 44
+                },
+                {
+                  "val": "895.99",
+                  "offset": 80
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anItemWithNameDescriptionAndUnitPriceIsInstantiated(java.lang.String,java.lang.String,java.lang.Double)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14098000,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "The item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsCreated()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 189000,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "An exception \"DataIntegrityViolationException\" is thrown",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"DataIntegrityViolationException\"",
+                  "offset": 13
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anExceptionIsThrown(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:32.398Z",
+        "before": [
+          {
+            "result": {
+              "duration": 390000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 411000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 18,
+        "name": "Create one item (option 2)",
+        "description": "",
+        "id": "create-items;create-one-item-(option-2)",
+        "after": [
+          {
+            "result": {
+              "duration": 83000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 11131000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 239350000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "An item is instantiated",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.anItemWithNameDescriptionAndUnitPriceIsInstantiated(com.jordanec.store.producer.entity.ItemEntity)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii",
+                  "Xperia X ii 256 GB",
+                  "999.00"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3645000,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "The item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsCreated()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 132000,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "The item is returned",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemIsReturned()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:32.675Z",
+        "before": [
+          {
+            "result": {
+              "duration": 410000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 868000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 37,
+        "name": "Create multiple items",
+        "description": "",
+        "id": "create-items;create-multiple-items",
+        "after": [
+          {
+            "result": {
+              "duration": 87000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 10708000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2224000,
+              "status": "passed"
+            },
+            "line": 38,
+            "name": "Multiple items are instantiated",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.multipleItemsAreInstantiated(java.util.List\u003ccom.jordanec.store.producer.entity.ItemEntity\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii",
+                  "Xperia X ii 256 GB",
+                  "999.00"
+                ]
+              },
+              {
+                "cells": [
+                  "Mac Pro",
+                  "Mac Pro 2020 32 GB",
+                  "3999.99"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5442000,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "The items are created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemsAreCreated()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 577000,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "The items are returned",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.theItemsAreReturned()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Create items",
+    "description": "",
+    "id": "create-items",
+    "keyword": "Feature",
+    "uri": "file:src/integration-test/resources/features/create-items.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 2,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 840658000,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "The given item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theGivenItemIsCreated(com.jordanec.store.producer.entity.ItemEntity)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii",
+                  "Xperia X ii 256 GB",
+                  "999.00"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:32.720Z",
+        "before": [
+          {
+            "result": {
+              "duration": 407000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 493000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 6,
+        "name": "Fetch item",
+        "description": "",
+        "id": "get-and-update-items;fetch-item",
+        "after": [
+          {
+            "result": {
+              "duration": 28146000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 114000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 567626000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "The item is fetched by its id",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theItemIsGetById()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 127000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "The values match",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theItemIsFetched()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 2,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 14430000,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "The given item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theGivenItemIsCreated(com.jordanec.store.producer.entity.ItemEntity)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii",
+                  "Xperia X ii 256 GB",
+                  "999.00"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:34.208Z",
+        "before": [
+          {
+            "result": {
+              "duration": 440000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 745000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 9,
+        "name": "Update and fetch item",
+        "description": "",
+        "id": "get-and-update-items;update-and-fetch-item",
+        "after": [
+          {
+            "result": {
+              "duration": 30155000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 135000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 57508000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The item name description and unit price are updated",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theItemNameDescriptionAndUnitPriceAreUpdated(com.jordanec.store.producer.entity.ItemEntity)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii (updated)",
+                  "Xperia X ii 256 GB (updated)",
+                  "984.00"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 157000,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "The values match",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theItemIsFetched()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 2,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 25369000,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "The given item is created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theGivenItemIsCreated(com.jordanec.store.producer.entity.ItemEntity)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Xperia X ii",
+                  "Xperia X ii 256 GB",
+                  "999.00"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2022-08-14T17:42:34.332Z",
+        "before": [
+          {
+            "result": {
+              "duration": 510000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.init()"
+            }
+          },
+          {
+            "result": {
+              "duration": 506000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.init()"
+            }
+          }
+        ],
+        "line": 14,
+        "name": "Items bulk creation and Find All",
+        "description": "",
+        "id": "get-and-update-items;items-bulk-creation-and-find-all",
+        "after": [
+          {
+            "result": {
+              "duration": 66179000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.cleanUp()"
+            }
+          },
+          {
+            "result": {
+              "duration": 100000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.CreateItemsSteps.cleanUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 58807000,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "The given items are created",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.theGivenItemsAreCreated(java.util.List\u003ccom.jordanec.store.producer.entity.ItemEntity\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "name",
+                  "description",
+                  "unitPrice"
+                ]
+              },
+              {
+                "cells": [
+                  "Mac Pro",
+                  "Mac Pro 2020 32 GB",
+                  "3999.99"
+                ]
+              },
+              {
+                "cells": [
+                  "Go Pro Hero 8",
+                  "Go Pro Hero 8",
+                  "300.00"
+                ]
+              },
+              {
+                "cells": [
+                  "HP Elitebook",
+                  "HP Elitebook 16GB Ram, Core i7 8th gen, 500GB SSD",
+                  "1200.00"
+                ]
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 50766000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Finding all items",
+            "match": {
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.findingAllItems()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 234000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "A list with 4 elements is returned",
+            "match": {
+              "arguments": [
+                {
+                  "val": "4",
+                  "offset": 12
+                }
+              ],
+              "location": "com.jordanec.store.producer.cucumber.GetItemsSteps.aListWithElementsIsReturned(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Get and update items",
+    "description": "",
+    "id": "get-and-update-items",
+    "keyword": "Feature",
+    "uri": "file:src/integration-test/resources/features/get-items.feature",
+    "tags": []
+  }
+]

@@ -37,11 +37,8 @@ public class OrderProducer
     {
         log.debug("sendOrderCreationAsynchronous() -> Sending message Asynchronously...");
         String key = order.getOrderNumber();
-//        String value = objectMapper.writeValueAsString(order);
 
         ProducerRecord<String, OrderDTO> producerRecord = producerRecordBuilder(key, order, partition);
-//        ListenableFuture<SendResult<String, String>> listenableFuture = kafkaTemplate
-//                .send(TOPIC_ORDER_EVENTS, partition, key, value);
         ListenableFuture<SendResult<String, OrderDTO>> listenableFuture = kafkaTemplate.send(producerRecord);
         listenableFuture.addCallback(new ListenableFutureCallback<SendResult<String, OrderDTO>>()
         {
@@ -58,26 +55,6 @@ public class OrderProducer
         });
         log.debug("sendOrderCreationAsynchronous() -> Message sent asynchronously!");
     }
-
-    /*public void sendOrderCreationSynchronous(OrderDTO order, Integer partition)
-            throws Throwable
-    {
-        log.debug("sendOrderCreationSynchronous() -> Sending message synchronously...");
-
-        String key = order.getOrderNumber();
-        String value = objectMapper.writeValueAsString(order);
-        try
-        {
-            ProducerRecord<String, String> producerRecord = producerRecordBuilder(key, value, partition);
-            SendResult<String, String> sendResult = kafkaTemplate.send(producerRecord).get();
-            log.debug("sendOrderCreationSynchronous() -> Message sent synchronously!");
-            handleSuccess(key, value, sendResult);
-        }
-        catch (Throwable throwable)
-        {
-            handleFailure(key, value, throwable);
-        }
-    }*/
 
     private ProducerRecord<String, String> producerRecordBuilder(String key, String value, Integer partition)
     {

@@ -10,8 +10,7 @@ import java.util.function.Function;
 
 @Configuration
 @Slf4j
-public class OrderProcessorConfig
-{
+public class OrderProcessorConfig {
     @Bean
     public Function<KStream<String, OrderDTO>, KStream<String, OrderDTO>> orderProcessor() {
 

@@ -41,25 +41,27 @@ import java.util.Map;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { ProducerApp.class,
         H2JpaConfig.class })
 @EmbeddedKafka(topics = {OrderProducer.TOPIC_ORDER_EVENTS}, partitions = 3)
-@TestPropertySource(properties = {"spring.kafka.producer.bootstrap-servers=${spring.embedded.kafka.brokers}",
-        "spring.kafka.admin.properties.bootstrap.servers=${spring.embedded.kafka.brokers}"})
+@TestPropertySource(
+        value = "classpath:application-test.yml"/*,
+        properties = {"spring.kafka.producer.bootstrap-servers=${spring.embedded.kafka.brokers}",
+        "spring.kafka.admin.properties.bootstrap.servers=${spring.embedded.kafka.brokers}"}*/)
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 public class OrderEntityControllerTest
 {
 
     @Autowired
-    TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplate;
 
     @Autowired
-    EmbeddedKafkaBroker embeddedKafkaBroker;
+    private EmbeddedKafkaBroker embeddedKafkaBroker;
 
     @Autowired
-    ItemService itemService;
+    private ItemService itemService;
 
     private Consumer<String, String> consumer;
 
-    OrderEntity inputOrder;
+    private OrderEntity inputOrder;
 
     @Before
     public void setUp() {
@@ -119,7 +121,7 @@ public class OrderEntityControllerTest
         inputOrder = new OrderEntity();
         inputOrder.setOrderNumber("12931478901243-47");
         inputOrder.setClient("Jordan Espinoza C.");
-        inputOrder.setShippingAddress("33122, FL, USA");
+//        inputOrder.setShippingAddress("33122, FL, USA");
         List<OrderLineEntity> orderLineEntities =  new ArrayList<>();
         OrderLineEntity orderLineEntity = new OrderLineEntity();
         orderLineEntity.setItem(itemEntity1);

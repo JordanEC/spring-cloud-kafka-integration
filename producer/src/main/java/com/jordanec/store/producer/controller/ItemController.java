@@ -16,81 +16,65 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api")
 @Slf4j
-public class ItemController
-{
-    @Autowired
-    ItemService itemService;
+public class ItemController {
+    private final ItemService itemService;
 
-    @RequestMapping(value = "/item", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ItemEntity> create(@RequestBody ItemEntity itemEntity) throws JsonProcessingException
-    {
-        try
-        {
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
+
+    @PostMapping(value = "/item",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ItemEntity> create(@RequestBody ItemEntity itemEntity) throws JsonProcessingException {
+        try {
             return new ResponseEntity<>(itemService.create(itemEntity), HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("create() -> item: {}", itemEntity, e);
             return ResponseEntity.badRequest().build();
         }
     }
 
 
-    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ItemEntity> update(@PathVariable("itemId") long itemId, @RequestBody ItemEntity itemEntity) throws JsonProcessingException
-    {
-        try
-        {
+    @PutMapping(value = "/item/{itemId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ItemEntity> update(@PathVariable("itemId") long itemId, @RequestBody ItemEntity itemEntity) {
+        try {
             return new ResponseEntity<>(itemService.update(itemId, itemEntity), HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("update() -> item: {}", itemEntity, e);
             return ResponseEntity.badRequest().build();
         }
     }
 
 
-    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> delete(@PathVariable("itemId") long itemId) throws JsonProcessingException
-    {
-        try
-        {
+    @DeleteMapping(value = "/item/{itemId}")
+    public ResponseEntity<Void> delete(@PathVariable("itemId") long itemId) {
+        try {
             itemService.delete(itemId);
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("delete() -> item: {}", itemId, e);
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @RequestMapping(value = "/item/bulkcreate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value = "/item/bulkcreate", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ItemEntity>> bulkCreate(@RequestBody List<ItemEntity> itemEntities) throws JsonProcessingException
-    {
-        try
-        {
+    public ResponseEntity<List<ItemEntity>> bulkCreate(@RequestBody List<ItemEntity> itemEntities) {
+        try {
             return new ResponseEntity<>(itemService.create(itemEntities), HttpStatus.OK);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("bulkCreate() -> {}", itemEntities, e);
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @RequestMapping(value = "/item", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ItemDTO>> findAll()
-    {
+    @GetMapping(value = "/item", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ItemDTO>> findAll() {
         return new ResponseEntity<>(itemService.findAll(), HttpStatus.OK);
     }
 
 
-    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ItemDTO> get(@PathVariable("itemId") long itemId)
-    {
+    @GetMapping(value = "/item/{itemId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ItemDTO> get(@PathVariable("itemId") long itemId) {
         return new ResponseEntity<>(itemService.findByItemId(itemId), HttpStatus.OK);
     }
 }

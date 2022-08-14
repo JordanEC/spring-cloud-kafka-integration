@@ -22,15 +22,19 @@ public class OrderLineEntity
 {
     @EmbeddedId
     private OrderLineId orderLineId;
+
     @ManyToOne
     @MapsId("itemId")
     private ItemEntity item;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
     @ToString.Exclude
     private OrderEntity order;
+
     @Column
     private Integer quantity;
+
     @Column
     private Double itemTotal;
 }

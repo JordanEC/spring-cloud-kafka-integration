@@ -18,9 +18,13 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-batch'
     compile group: 'org.springframework.retry', name: 'spring-retry'
     compile group: 'org.springframework', name: 'spring-aspects'
+    compile group: 'mysql', name: 'mysql-connector-java'
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.springframework.cloud:spring-cloud-stream:3.1.3'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka:3.1.3'
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams:3.1.3'
+
+    testRuntime("com.h2database:h2")
 }

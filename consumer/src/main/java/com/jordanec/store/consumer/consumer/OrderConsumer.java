@@ -12,8 +12,7 @@ import java.io.UnsupportedEncodingException;
 
 @Component
 @Slf4j
-public class OrderConsumer
-{
+public class OrderConsumer {
     public final static String TOPIC_NAME = "order-notifications";
 
     private final ShipmentService shipmentService;
@@ -25,29 +24,23 @@ public class OrderConsumer
     /**
      * Since partition is not defined here, it will receive all messages for any partition.
      *
-     *
      * @throws JsonProcessingException
      */
-    @KafkaListener(topics = TOPIC_NAME)   //If there's a listener for each partition is not possible to have another one for all partitions
-    public void onMessageNoPartitionDefined(ConsumerRecord<String,OrderDTO> consumerRecord)
-            throws JsonProcessingException, InterruptedException
-    {
+    @KafkaListener(topics = TOPIC_NAME)
+    //If there's a listener for each partition is not possible to have another one for all partitions
+    public void onMessageNoPartitionDefined(ConsumerRecord<String, OrderDTO> consumerRecord) {
         logRecordConsumption("onMessageNoPartitionDefined", consumerRecord);
         shipmentService.registerOrder(consumerRecord.value());
     }
 
 
-    private void logRecordConsumption(String methodName, ConsumerRecord<String, OrderDTO> consumerRecord)
-    {
+    private void logRecordConsumption(String methodName, ConsumerRecord<String, OrderDTO> consumerRecord) {
         StringBuilder sb = new StringBuilder();
         consumerRecord.headers()
                 .forEach(h -> {
-                    try
-                    {
+                    try {
                         sb.append(h.key()).append("=").append(new String(h.value(), "UTF-8")).append(" ");
-                    }
-                    catch (UnsupportedEncodingException e)
-                    {
+                    } catch (UnsupportedEncodingException e) {
                         log.error("logRecordConsumption() -> Error while decoding headers", e);
                     }
                 });

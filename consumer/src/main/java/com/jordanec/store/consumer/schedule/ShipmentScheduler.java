@@ -4,7 +4,6 @@ import com.jordanec.store.consumer.constant.ShipmentStatus;
 import com.jordanec.store.consumer.entity.ShipmentEntity;
 import com.jordanec.store.consumer.service.ShipmentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
@@ -31,12 +30,11 @@ public class ShipmentScheduler {
      */
     @Retryable(value = Exception.class, maxAttempts = 3, backoff = @Backoff(delay = 60000))
     @Transactional
-    @Scheduled(cron = "#{ ${application.scheduler.shipmentDispatcher.enabled} ? '${application.scheduler.shipmentDispatcher.cron}' : '-' }")
+    @Scheduled(cron = "#{ ${application.scheduler.shipment-dispatcher.enabled} ? '${application.scheduler.shipment-dispatcher.cron}' : '-' }")
     public void shipmentDispatcher() throws Exception {
         log.info("shipmentDispatcherScheduler() -> Started...");
         Random random = new Random();
-        if (5 == (random.nextInt(5) + 1))
-        {
+        if (5 == (random.nextInt(5) + 1)) {
             log.warn("random number matches!");
             throw new Exception("Simulating an error if a random number is 5");
         }

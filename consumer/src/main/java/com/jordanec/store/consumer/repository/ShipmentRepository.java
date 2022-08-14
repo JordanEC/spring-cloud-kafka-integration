@@ -8,8 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ShipmentRepository extends JpaRepository<ShipmentEntity, Long>
-{
+public interface ShipmentRepository extends JpaRepository<ShipmentEntity, Long> {
     ShipmentEntity findFirstByStatusOrderByCreation(String status);
 
     @Modifying

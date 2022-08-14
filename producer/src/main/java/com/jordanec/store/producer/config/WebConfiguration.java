@@ -3,7 +3,6 @@ package com.jordanec.store.producer.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -15,10 +14,10 @@ import java.util.List;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Value("${application.web.allowedOrigins}")
+    @Value("${application.web.allowed-origins}")
     private String[] allowedOrigins;
 
-    @Value("${application.web.allowedMethods}")
+    @Value("${application.web.allowed-methods}")
     private String[] allowedMethods;
 
     @Override
@@ -34,8 +33,8 @@ public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry
-            .addMapping("/**")
-            .allowedOrigins(allowedOrigins)
-            .allowedMethods(allowedMethods);
+                .addMapping("/**")
+                .allowedOrigins(allowedOrigins)
+                .allowedMethods(allowedMethods);
     }
 }

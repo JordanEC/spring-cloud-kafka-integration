@@ -29,6 +29,7 @@ public class ItemEntity
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemId;
+    @Column(nullable = false)
     private String name;
     private String description;
     private Double unitPrice;

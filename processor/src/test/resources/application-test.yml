@@ -1,5 +1,4 @@
 spring:
-  profiles: test
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
@@ -19,5 +18,6 @@ spring:
       settings:
         trace: true
         web-allow-others: true
-hibernate:
-  dialect: org.hibernate.dialect.H2Dialect
+  config:
+    activate:
+      on-profile: test

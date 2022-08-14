@@ -4,15 +4,13 @@ import com.jordanec.store.dtos.dto.ItemDTO;
 import com.jordanec.store.producer.entity.ItemEntity;
 import com.jordanec.store.producer.mapper.ItemMapper;
 import com.jordanec.store.producer.repository.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class ItemService
-{
+public class ItemService {
     private final ItemMapper itemMapper;
 
     private final ItemRepository itemRepository;
@@ -23,8 +21,7 @@ public class ItemService
     }
 
     @Transactional
-    public ItemEntity create(ItemEntity itemEntity)
-    {
+    public ItemEntity create(ItemEntity itemEntity) {
         itemRepository.save(itemEntity);
         return itemEntity;
     }
@@ -42,24 +39,20 @@ public class ItemService
     }
 
     @Transactional
-    public List<ItemEntity> create(List<ItemEntity> itemEntities)
-    {
+    public List<ItemEntity> create(List<ItemEntity> itemEntities) {
         itemRepository.saveAll(itemEntities);
         return itemEntities;
     }
 
-    public ItemDTO findByName(String name)
-    {
+    public ItemDTO findByName(String name) {
         return itemMapper.toItemDTO(itemRepository.findByName(name));
     }
 
-    public ItemDTO findByItemId(Long itemId)
-    {
+    public ItemDTO findByItemId(Long itemId) {
         return itemMapper.toItemDTO(itemRepository.findByItemId(itemId));
     }
 
-    public List<ItemDTO> findAll()
-    {
+    public List<ItemDTO> findAll() {
         return itemMapper.toItemDTOList(itemRepository.findAll());
     }
 }

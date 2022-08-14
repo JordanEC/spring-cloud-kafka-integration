@@ -11,11 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -23,6 +22,7 @@ public class OrderScheduler {
     private final OrderService orderService;
     private final ItemService itemService;
     private final AddressMapper addressMapper;
+    private static final Faker faker = new Faker();
 
     public OrderScheduler(OrderService orderService, ItemService itemService, AddressMapper addressMapper) {
         this.orderService = orderService;
@@ -30,41 +30,57 @@ public class OrderScheduler {
         this.addressMapper = addressMapper;
     }
 
-    @Scheduled(cron = "#{ ${application.scheduler.randomOrderCreator.enabled} ? '${application.scheduler.randomOrderCreator.cron}' : '-' }")
+    @Scheduled(cron = "#{ ${application.scheduler.random-order-creator.enabled} ? '${application.scheduler.random-order-creator.cron}' : '-' }")
     public void randomOrderCreator() {
         log.info("randomOrderCreator() -> Started...");
+        final int orderLinesToGenerate = faker.random().nextInt(1, 5);
 
-        final Mono<OrderDTO> mono = Mono.fromSupplier(() -> {
-            Faker faker = new Faker();
+        orderPublisher(orderLinesToGenerate)
+                .subscribe(tuple -> {
+                    final OrderDTO order = tuple.getT1();
 
-            OrderDTO orderDTO = new OrderDTO();
-            orderDTO.setOrderNumber(String.valueOf(faker.number().numberBetween(50, 900000000000L)));
-            orderDTO.setClient(faker.name().fullName());
-            orderDTO.setAddress(addressMapper.toAddressDTO(faker.address()));
-            Integer orderLinesToGenerate = faker.random().nextInt(1, 5);
-            List<OrderLineDTO> orderLines = new ArrayList<>(orderLinesToGenerate);
+                    final List<OrderLineDTO> orderLines = tuple.getT2();
+                    order.setOrderLines(orderLines);
 
+                    log.info("Creating random order: {}", order);
+                    orderService.create(order, null);
+                });
+
+    }
+
+    private Mono<Tuple2<OrderDTO, List<OrderLineDTO>>> orderPublisher(int orderLinesCount) {
+        return Mono.zip(baseOrderPublisher(), orderLinesPublisher(itemsPublisher(orderLinesCount)));
+    }
+
+    private Mono<OrderDTO> baseOrderPublisher() {
+        return Mono.fromSupplier(
+                () -> {
+                    OrderDTO orderDTO = new OrderDTO();
+                    orderDTO.setOrderNumber(String.valueOf(faker.number().numberBetween(50, 900000000000L)));
+                    orderDTO.setClient(faker.name().fullName());
+                    orderDTO.setAddress(addressMapper.toAddressDTO(faker.address()));
+                    return orderDTO;
+                }
+        );
+    }
+
+
+    private Mono<List<ItemDTO>> itemsPublisher(int count) {
+        return Mono.fromSupplier(() -> {
             List<ItemDTO> items = itemService.findAll();
             Collections.shuffle(items);
-            LinkedList<ItemDTO> linkedList = new LinkedList<>(items);
-
-            for (int i = 0; i < orderLinesToGenerate; i++) {
-                ItemDTO dto = linkedList.pollFirst();
-
-                OrderLineDTO orderLineDTO = new OrderLineDTO();
-                orderLineDTO.setItem(dto);
-                orderLineDTO.setQuantity(faker.random().nextInt(1, 3));
-
-                orderLines.add(orderLineDTO);
-            }
-
-            orderDTO.setOrderLines(orderLines);
-            return orderDTO;
+            return items.stream().limit(count).collect(Collectors.toList());
         });
+    }
 
-        mono.subscribe(dto -> {
-            log.info("Creating random order: {}", dto);
-            orderService.create(dto, null);});
-
+    private Mono<List<OrderLineDTO>> orderLinesPublisher(Mono<List<ItemDTO>> itemsPublisher) {
+        return itemsPublisher.map(items ->
+                items.stream().map(item -> {
+                    OrderLineDTO orderLineDTO = new OrderLineDTO();
+                    orderLineDTO.setItem(item);
+                    orderLineDTO.setQuantity(faker.random().nextInt(1, 3));
+                    return orderLineDTO;
+                }).collect(Collectors.toList())
+        );
     }
 }

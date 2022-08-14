@@ -15,8 +15,6 @@ repositories {
 
 dependencies {
     compile project(":dtos")
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-batch'
-    compile group: 'org.springframework.retry', name: 'spring-retry'
     compile group: 'org.springframework', name: 'spring-aspects'
 
     implementation 'org.springframework.kafka:spring-kafka'

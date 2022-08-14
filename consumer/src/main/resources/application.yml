@@ -1,9 +1,9 @@
 application:
   name: shipment
   scheduler:
-      shipmentDispatcher:
+      shipment-dispatcher:
         enabled: true
-        cron: "0 0/5 * 1/1 * ?"
+        cron: "0 0/1 * 1/1 * ?"
 server:
   port: 8082
   servlet:
@@ -23,6 +23,9 @@ spring:
   config:
     activate:
       on-profile: local
+  sql:
+    init:
+      platform: mysql
   datasource:
     url: jdbc:mysql://localhost:3306/store_consumer
     name: store_consumer
@@ -53,33 +56,6 @@ spring:
         acks: all
         retries: 3
         retry.backoff.ms: 1000
-#  cloud.stream:
-#    function:
-#      definition: orderNotificator
-#    bindings:
-#      orderNotificator-in-0:
-#        destination: order-notifications
-#    kafka:
-#      bindings:
-#        orderNotificator-in-0:
-#          consumer:
-#            configuration:
-#              value:
-#                deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      binder:
-#        defaultBrokerPort: 29092
-  sql:
-    init:
-      platform: mysql
-#  kafka:
-##    template:
-##      default-topic: order-events
-#    consumer:
-##      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
-#      bootstrap-servers: localhost:9092,kafka-service:9092
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      group-id: order-events_shipment
 logging:
   level:
     root: INFO
@@ -89,12 +65,13 @@ logging:
 #      springframework: DEBUG
 ---
 spring:
-  profiles: docker
+  config:
+    activate:
+      on-profile: docker
   datasource:
-    platform: mysql
     url: jdbc:mysql://mysql:3306/store_consumer
-    username: root
     name: store_consumer
+    username: root
     password: 54321
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
@@ -106,18 +83,26 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   kafka:
-    #    template:
-    #      default-topic: order-events
+    admin:
+      properties:
+        bootstrap.servers: kafka-service:29092
+    producer:
+      bootstrap-servers: kafka-service:29092
     consumer:
-      #      bootstrap-servers: kafka:9092,kafka:9093,kafka:9094
       bootstrap-servers: kafka-service:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: order-events_shipment
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: consumer-1
+      properties:
+        spring.json.trusted.packages: "com.jordanec.store.*"
+        acks: all
+        retries: 3
+        retry.backoff.ms: 1000
+  sql:
+    init:
+      platform: mysql
 logging:
   level:
     root: INFO
-#    org:
-#      springframework: INFO
-#    com:
-#      jordanec: INFO
+    com:
+      jordanec: DEBUG
